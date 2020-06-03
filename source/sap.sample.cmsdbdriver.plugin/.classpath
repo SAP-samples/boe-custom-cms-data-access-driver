@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.8"/>
+	<classpathentry kind="var" path="BOE_HOME"/>
+	<classpathentry kind="var" path="BOE_HOME/dataAccess/connectionServer/drivers/java/dbd_sap_java_drivers_sdk.jar"/>
+	<classpathentry kind="var" path="BOE_HOME/dataAccess/connectionServer/drivers/java/dbd_sapbicms.jar"/>
+	<classpathentry kind="var" path="BOE_HOME/java/lib/ConnectionServer.jar"/>
+	<classpathentry kind="var" path="BOE_HOME/java/lib/cecore.jar"/>
+	<classpathentry kind="var" path="BOE_HOME/java/lib/celib.jar"/>
+	<classpathentry kind="var" path="BOE_HOME/dataAccess/connectionServer/drivers/java/cs_sqlparser.jar"/>
+	<classpathentry kind="var" path="BOE_HOME/java/lib/logging.jar"/>
+	<classpathentry kind="var" path="BOE_HOME/dataAccess/connectionServer/drivers/java/cms_extensions/sap.sample.cmsdbdriver.core.jar"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>
