@@ -1,4 +1,4 @@
-# CMS Data Access Driver - Custom samples
+# CMS Data Access Driver - Custom Samples
 
 ## Description
 The [Central Management Server Database Driver](https://wiki.scn.sap.com/wiki/display/BOBJ/Unlock+the+CMS+database+with+new+data+access+driver+for+BI+4.2)
