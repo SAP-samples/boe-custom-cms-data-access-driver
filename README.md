@@ -1,5 +1,7 @@
 # CMS Data Access Driver - Custom Samples
 
+[![REUSE status](https://api.reuse.software/badge/github.com/SAP-samples/boe-custom-cms-data-access-driver)](https://api.reuse.software/info/github.com/SAP-samples/boe-custom-cms-data-access-driver)
+
 ## Description
 The [Central Management Server Database Driver](https://wiki.scn.sap.com/wiki/display/BOBJ/Unlock+the+CMS+database+with+new+data+access+driver+for+BI+4.2)
  allows you to use a universe and native reporting clients to query the metadata of the  Central Management Server (CMS) repository database.
@@ -73,6 +75,3 @@ It is planned to add
 
 ## License
 Copyright (c) 2020 SAP SE or an SAP affiliate company. All rights reserved. This file is licensed under the Apache Software License, version 2.0 except as noted otherwise in the [LICENSE](LICENSES/Apache-2.0.txt) file.
-
-[![REUSE status](https://api.reuse.software/badge/github.com/SAP-samples/boe-custom-cms-data-access-driver)](https://api.reuse.software/info/github.com/SAP-samples/boe-custom-cms-data-access-driver)
-
