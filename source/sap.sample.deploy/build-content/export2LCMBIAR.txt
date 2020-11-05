@@ -1,7 +1,7 @@
 -------------------------------------------------------------------------------
 Promotion Management CLI started
 -------------------------------------------------------------------------------
-Reading options from property file "C:\Users\d050791\git\CustomCMSDataAccess-Samples\sample\sap.sample.deploy\build-content\\content.export.properties" ...
+Reading options from property file "C:\workspace\sap.sample.deploy\build-content\\content.export.properties" ...
 Logging in to Central CMS "localhost:6400" ...
 Successfully logged in to Central CMS as "Administrator"
 Selecting export action.
@@ -11,18 +11,25 @@ Successfully logged in to Source CMS as "Administrator"
 -------------------------------------------------------------------------------
 | Creating job from queries:
 | (1) select * from ci_infoobjects where si_cuid in ('AUI80tTpliJNl_76uXn08Qw', 'AdM1Fnkz_JVCuKVr6Dkr1yI')
+| (2) select * from ci_infoobjects where si_parent_cuid in ('AdM1Fnkz_JVCuKVr6Dkr1yI')
+| (3) select * from ci_appobjects where si_cuid in ('Aaasea6uAOFFuUiaQXDujA4', 'ATI9OpCgttVFvt.mWMcapyM')
+| (4) select * from ci_appobjects where si_parent_cuid in ('ATI9OpCgttVFvt.mWMcapyM')
 -------------------------------------------------------------------------------
-Job "Job from query by Administrator on Fri May 08 13:05:09 BST 2020" has been created.
+Job "Query_Administrator_Thu Nov 05 05:27:16 PST 2020" has been created.
 -------------------------------------------------------------------------------
-| Objects added as primary (total 2) in job "Job from query by Administrator on Fri May 08 13:05:09 BST 2020"
+| Objects added as primary (total 7) in job "Query_Administrator_Thu Nov 05 05:27:16 PST 2020"
 | - SAP Samples (AUI80tTpliJNl_76uXn08Qw)
 | - BI on BI (AdM1Fnkz_JVCuKVr6Dkr1yI)
+| - Custom Data Access - Sample - Tutorial Results (Abh2ZJR4Y31BphIYdzFNdWY)
+| - Custom Data Access - Sample - Rest API JSON Metadata (AddIPrpktJFMg.Hw5YNJSnI)
+| - SAP Samples (Aaasea6uAOFFuUiaQXDujA4)
+| - BI on BI (ATI9OpCgttVFvt.mWMcapyM)
+| - BI CMS Data Access - Custom sample.unx (ASqyOJbvMzpKnQMLVZR1qps)
 -------------------------------------------------------------------------------
 -------------------------------------------------------------------------------
-| Objects excluded from primary (total 0) in job "Job from query by Administrator on Fri May 08 13:05:09 BST 2020"
+| Objects excluded from primary (total 0) in job "Query_Administrator_Thu Nov 05 05:27:16 PST 2020"
 -------------------------------------------------------------------------------
 Export file "content.lcmbiar" has been created.
-Job(s) completed in 0:00'09''
 -------------------------------------------------------------------------------
 Promotion Management successfully ended
 -------------------------------------------------------------------------------
