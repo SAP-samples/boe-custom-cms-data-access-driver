@@ -3,8 +3,10 @@ package sap.sample.cmsdbdriver.plugin.custom;
 import java.sql.Types;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Set;
 
 import com.sap.connectivity.cs.java.drivers.cms.CMSDBDriverException;
+import com.sap.connectivity.cs.java.drivers.cms.api.IQueryElement;
 import com.sap.connectivity.cs.java.drivers.sdk.datafoundation.IUnvTable;
 import com.sap.connectivity.cs.java.drivers.sdk.datafoundation.UnvTableFieldDef;
 
@@ -51,7 +53,7 @@ public class TemplateTableResults extends IResultTable implements IUnvTable {
 	/**
 	 * use the getQueryElement() or getIds() to prepare data for setValues()
 	 */
-	public void initialize() {
+	public void initialize(IQueryElement queryElement, Set<Integer> ids) {
 		// nothing to initialize/prepare
 	}
 

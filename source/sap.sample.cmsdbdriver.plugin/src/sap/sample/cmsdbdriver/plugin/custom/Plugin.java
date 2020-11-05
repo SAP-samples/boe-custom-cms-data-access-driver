@@ -20,6 +20,7 @@ public class Plugin implements IPlugin {
     public Plugin(final CMSDriverConnection connection) {  
     	pluginBase = new PluginBase(connection);
     	pluginBase.addTable(new TemplateTableResults(pluginBase));
+    	pluginBase.addTable(new RestJSONTableResults(pluginBase));
     }
 
 	@Override

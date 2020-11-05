@@ -17,7 +17,7 @@ public abstract class IResultTable {
 		this.plugin = plugin;
 	}
     
-	public abstract void initialize();
+	public abstract void initialize(IQueryElement queryElement, Set<Integer> ids);
 	
 	public abstract void setValues(int id) throws CMSDBDriverException;
 	
@@ -40,7 +40,7 @@ public abstract class IResultTable {
 	public void initializeDetails(IQueryElement queryElement, Set<Integer> ids) {
 		this.queryElement = queryElement;
 		this.ids = ids;
-		initialize();
+		initialize(queryElement, ids);
 	}
 
 	public IQueryElement getQueryElement() {

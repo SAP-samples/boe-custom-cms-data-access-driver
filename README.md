@@ -33,6 +33,8 @@ This project provides content to demonstrate use cases from different areas and 
   Virtual Table          | Description
   ----------------- | -------------------------------------------------------------------------------------------------
   TemplateTableResults | Table with 2 Columns, returning the *<ID> and *<ID>: text of the associated InfoObject
+   RestJSONTableResults | Table with the results of a JSON request, returning the response body information in the columns
+  
   
 <a name='requirements'>
 

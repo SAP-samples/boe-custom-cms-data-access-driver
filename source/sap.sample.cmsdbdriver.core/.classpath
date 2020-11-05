@@ -10,5 +10,7 @@
 	<classpathentry kind="var" path="BOE_HOME/dataAccess/connectionServer/drivers/java/dbd_sap_java_drivers_sdk.jar"/>
 	<classpathentry kind="var" path="BOE_HOME/dataAccess/connectionServer/drivers/java/dbd_sapbicms.jar"/>
 	<classpathentry kind="var" path="BOE_HOME/dataAccess/connectionServer/drivers/java/cs_sqlparser.jar"/>
+	<classpathentry kind="var" path="BOE_HOME/java/lib/json.jar"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/com.sap.sample.boe.services"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
