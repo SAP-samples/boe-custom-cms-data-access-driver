@@ -17,8 +17,6 @@ import org.apache.commons.lang.StringEscapeUtils;
 import org.json.JSONObject;
 
 import com.crystaldecisions.sdk.framework.CrystalEnterprise;
-import com.crystaldecisions.sdk.framework.IEnterpriseSession;
-import com.crystaldecisions.sdk.framework.ISessionMgr;
 import com.crystaldecisions.sdk.occa.infostore.IInfoObject;
 import com.crystaldecisions.sdk.occa.infostore.IInfoObjects;
 import com.crystaldecisions.sdk.occa.infostore.IInfoStore;
@@ -31,6 +29,9 @@ public class RESTRequest {
 		token, serializedSession
 	}
 
+	private static String LOGON_URL = "/logon/token";
+	
+	private SessionHandler sessionHandler;
     private String logonToken;
     private String baseUrl;
     private String responseContent;
@@ -60,7 +61,7 @@ public class RESTRequest {
     	IInfoObjects infoObjects = infoStore.query(BASE_URL);
     	IInfoObject infoObject = (IInfoObject)infoObjects.get(0);
     	baseUrl = infoObject.properties().getString("SI_ACCESS_URL");
-   		logon(serializedSession, TOKEN_TYPE.serializedSession);
+    	sessionHandler = new SessionHandler(serializedSession);
     }
 
     /**
@@ -73,18 +74,8 @@ public class RESTRequest {
     	// query the url from the CMS
     	IInfoObject infoObject = (IInfoObject)infoObjects.get(0);
     	baseUrl = infoObject.properties().getString("SI_ACCESS_URL");
-    	
-    	ISessionMgr sessionMgr = CrystalEnterprise.getSessionMgr();
-    	IEnterpriseSession eSession = sessionMgr.getSession(serializedSession);
-    	eSession = sessionMgr.logonWithToken(eSession.getLogonTokenMgr().getDefaultToken());
-    	logon(eSession.getSerializedSession(), TOKEN_TYPE.serializedSession);
-    	
-//    	   public void send(String url, String method, String content, boolean useJSON) throws Exception {
-//    	    	if (logonToken == null && !url.endsWith(LOGON_URL)) {
-//    	    		connect();
-//    	    	}
-//    	    	url = baseUrl + url;
-    	 
+
+    	sessionHandler = new SessionHandler(serializedSession, CrystalEnterprise.getSessionMgr());
     }
 
     /**
@@ -93,7 +84,7 @@ public class RESTRequest {
      * @throws Exception
      */
     private void logon(String sessionToken, TOKEN_TYPE tokenType) throws Exception {
-    	send(baseUrl + "/logon/token", "GET", null, false);
+    	send(baseUrl + LOGON_URL, "GET", null, false);
     	// TOKEN_TYPE tokenType = TOKEN_TYPE.serializedSession;
     	if (tokenType == TOKEN_TYPE.serializedSession) sessionToken = StringEscapeUtils.escapeXml(sessionToken);
         // Sets logon information
@@ -104,7 +95,7 @@ public class RESTRequest {
 				                                                  "<attr name=\"logonToken\" type=\"string\">" + sessionToken + "</attr>");
 		// must specify the correct token type
 		filledLogonResponse = filledLogonResponse.replaceFirst(">token</attr>", ">" + tokenType.toString() + "</attr>");
-        send(baseUrl + "/logon/token", "POST", filledLogonResponse, false);
+        send(baseUrl + LOGON_URL, "POST", filledLogonResponse, false);
         
         logonToken = responseHeaders.get("X-SAP-LogonToken").get(0);
     }
@@ -118,6 +109,7 @@ public class RESTRequest {
      * @throws Exception
      */
 	public JSONObject sendRequestJSON(String requestUrl, String method, String jsonContent) throws Exception {
+		getLogonToken(requestUrl);
        	send(baseUrl + requestUrl, method, jsonContent, true);
         JSONObject document = new JSONObject(responseContent);
         if (responseCode == HTTP_OK) return document;
@@ -138,6 +130,7 @@ public class RESTRequest {
 	 * @throws Exception
 	 */
 	public String sendRequestGet(String requestUrl) throws Exception {
+		getLogonToken(requestUrl);
        	send(baseUrl + requestUrl, "GET", null, false);
         if (responseCode == HTTP_OK) return responseContent;
         return null;
@@ -153,6 +146,7 @@ public class RESTRequest {
      * @throws Exception
      */
     private void send(String url, String method, String content, boolean useJSON) throws Exception {
+		getLogonToken(url);
     	String accept = (useJSON ? "application/json" : "application/xml");
         responseContent = null;
         responseHeaders = null;
@@ -206,5 +200,16 @@ public class RESTRequest {
         }
     }
 
+    /**
+     * 
+     * @param url
+     * @throws Exception
+     */
+    private void getLogonToken(String url) throws Exception {
+    	if (logonToken == null && !url.endsWith(LOGON_URL)) {
+    		logon(sessionHandler.getSerializedSession(), TOKEN_TYPE.serializedSession);
+    	}
+
+    }
 
 }
