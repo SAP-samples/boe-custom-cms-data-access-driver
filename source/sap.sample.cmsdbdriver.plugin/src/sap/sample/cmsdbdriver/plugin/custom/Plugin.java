@@ -21,6 +21,7 @@ public class Plugin implements IPlugin {
     	pluginBase = new PluginBase(connection);
     	pluginBase.addTable(new TemplateTableResults(pluginBase));
     	pluginBase.addTable(new RestJSONTableResults(pluginBase));
+    	pluginBase.addTable(new ScheduleInfoTableResults(pluginBase));
     }
 
 	@Override
